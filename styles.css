@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+body {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700; 
+  background-color: black;
+  color: black;
+  margin: 0;
+  padding: 0;
+}
+
+/* 모든 요소 초기화 */
+* {
+  box-sizing: border-box;
+}
+
+/* 컨테이너 */
+.block {
+  margin: 90px auto;
+  text-align: center; /* 중앙 정렬 */
+}
+
+/* 행 설정 */
+.row {
+  display: flex;
+  justify-content: center;
+  gap: 120px; /* 요소 간 간격 */
+  margin-bottom: 80px;
+}
+
+/* 빨간 사각형 스타일 */
+.square_red {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center; 
+  width: 100px;
+  height: 100px;
+  background-color: rgb(255, 0, 50);
+  color: black; 
+  font-weight: 900;
+  transition: width 2.5s ease-out, height 0.4s ease-in, background-color 0.9s, border-radius 1s;
+  text-align: center;
+  border-radius: 0;
+  cursor: pointer;
+  margin: 30;
+}
+
+.square_red:hover {
+  width: 200px; 
+  height: 200px; 
+  background-color: lightcoral;
+  border-radius: 10em;
+}
+
+
+/* 포스트잇 변화는 과정 */
+.postit {
+  display: flex;
+  flex-direction: column; /* 수직 정렬 */
+  align-items: center;
+  justify-content: center;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background-color: deepskyblue;
+  color: black;
+  font-weight: 900;
+  text-align: center;
+  cursor: pointer;
+  margin: 30px;
+  overflow: hidden;
+  position: relative;
+  transition: width 1.5s ease-out, height 2s ease-in, background-color 0.9s, border-radius 2s ease-in-out;
+}
+
+.postit:hover {
+  width: 250px;
+  height: 250px;
+  border-radius: 10%;
+  background-color: #5404d6;
+}
+
+
+
+/* 텍스트 스타일 설정 */
+.postit p {
+  margin: 20px 0; /* 문단 간격 증가 */
+  padding: 0 30px; /* 좌우 패딩 추가 */
+  font-size: 16px;
+  line-height: 1.8; /* 줄 간격 증가 */
+  opacity: 0; /* 기본적으로 숨김 */
+  text-align: center;
+  transition: opacity 0.5s ease; /* 부드러운 전환 */
+}
+
+/* 부정어 텍스트 스타일 */
+.hover-text1 {
+  color: black;
+  margin-bottom: 15px;
+}
+
+/* 긍정어 텍스트 스타일 */
+.hover-text2 {
+  color: white;
+  margin-top: 15px;
+}
+
+/* 사각형 모드에서만 텍스트 보이기 */
+.postit.square-mode p {
+  opacity: 1; /* 사각형일 때 텍스트 표시 */
+}
+
+

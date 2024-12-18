@@ -8,23 +8,22 @@ body {
   padding: 0;
 }
 
-/* 모든 요소 초기화 */
 * {
   box-sizing: border-box;
 }
 
 /* 컨테이너 */
 .block {
-  margin: 90px auto;
-  text-align: center; /* 중앙 정렬 */
+  margin: 40px auto;
+  text-align: center; 
 }
 
 /* 행 설정 */
 .row {
   display: flex;
   justify-content: center;
-  gap: 120px; /* 요소 간 간격 */
-  margin-bottom: 80px;
+  gap: 90px; /* 도형간격 */
+  margin-bottom: 40px;
 }
 
 /* 빨간 사각형 스타일 */
@@ -32,8 +31,8 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center; 
-  width: 100px;
-  height: 100px;
+  width: 90px;
+  height: 90px;
   background-color: rgb(255, 0, 50);
   color: black; 
   font-weight: 900;
@@ -41,12 +40,12 @@ body {
   text-align: center;
   border-radius: 0;
   cursor: pointer;
-  margin: 30;
+  margin: 20;
 }
 
 .square_red:hover {
-  width: 200px; 
-  height: 200px; 
+  width: 180px; 
+  height: 180px; 
   background-color: lightcoral;
   border-radius: 10em;
 }
@@ -55,58 +54,103 @@ body {
 /* 포스트잇 변화는 과정 */
 .postit {
   display: flex;
-  flex-direction: column; /* 수직 정렬 */
+  flex-direction: column; 
   align-items: center;
   justify-content: center;
-  width: 220px;
-  height: 220px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   background-color: deepskyblue;
   color: black;
   font-weight: 900;
   text-align: center;
   cursor: pointer;
-  margin: 30px;
+  margin: 20px;
   overflow: hidden;
   position: relative;
   transition: width 1.5s ease-out, height 2s ease-in, background-color 0.9s, border-radius 2s ease-in-out;
 }
 
 .postit:hover {
-  width: 250px;
-  height: 250px;
+  width: 220px;
+  height: 220px;
   border-radius: 10%;
   background-color: #5404d6;
 }
 
 
-
-
 /* 텍스트 스타일 */
 .postit p {
   margin: 20px 0; /* 문단 간격 */
-  padding: 0 30px; /* 좌우 패딩 */
+  padding: 0 20px; /* 좌우 패딩 */
   font-size: 16px;
   line-height: 1.8;
-  opacity: 0; /* 기본적으로 숨김 */
+  opacity: 0;
   text-align: center;
-  transition: opacity 0.5s ease; /* 부드러운 전환 */
+  transition: opacity 0.5s ease; 
 }
 
 /* 사각형 모드에서 텍스트 표시 */
 .postit.square-mode p {
-  opacity: 1; /* 텍스트가 나타남 */
+  opacity: 1; 
 }
 
-/* 부정어 텍스트 스타일 */
+/* 부정어 스타일 */
 .hover-text1 {
   color: black;
   margin-bottom: 15px;
 }
 
-/* 긍정어 텍스트 스타일 */
+/* 긍정어 타일 */
 .hover-text2 {
   color: white;
   margin-top: 15px;
 }
 
+
+
+/* 마지막 동그라미 기본 스타일 */
+.clickable-circle {
+  width: 300px;
+  height: 300px;
+  border-radius: 0; /* 원 상태 */
+  background-color:black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  transition: width 2.5s ease-out, height 0.4s ease-in, background-color 0.9s, border-radius 1s; 
+  margin: 20px auto;
+}
+
+/* 직사각형 상태 */
+.clickable-circle.rectangle {
+  width: 500px;
+  height: 150px; /* 직사각형 */
+  border-radius: 10px; /* 둥근 모서리 */
+  background-color: black;
+}
+
+/* 텍스트 스타일 */
+.circle-text {
+  font-size: 1rem;
+  color: #00DDD7;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.rectangle .circle-text {
+  opacity: 0; /* 직사각형으로 변환 시 텍스트 숨김 */
+}
+
+.rectangle::after {
+  content: "사람은 가끔 마음이 지칠 때 불만들과 부정적인 사고들로 가득찬다. 나는 그런 생각들을 가질 때 마다 긍정적인 사고로 전환하여 메모장에 적어둔다. 하여 메모들이 담겨있는 나의 '긍정노트'가 사람들에게 긍정적인 역할이 되었으면 한다.";
+  font-size: 1rem;
+  color:deepskyblue ;
+  text-align: center;
+  margin: 20;
+  display: block;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}

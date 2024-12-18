@@ -10,7 +10,7 @@ document.querySelectorAll('.postit').forEach(element => {
     element.appendChild(pElement1);
     element.appendChild(pElement2);
 
-    let isHovered = false; // 상태를 추적하는 플래그
+    let isHovered = false; // 상태를 추
 
     // 텍스트 표시
     const showText = () => {
@@ -20,7 +20,7 @@ document.querySelectorAll('.postit').forEach(element => {
         pElement2.style.opacity = '1';
     };
 
-    // 텍스트 숨기기
+
     const hideText = () => {
         pElement1.style.opacity = '0';
         pElement2.style.opacity = '0';
@@ -29,7 +29,7 @@ document.querySelectorAll('.postit').forEach(element => {
                 pElement1.textContent = '';
                 pElement2.textContent = '';
             }
-        }, 500); // 텍스트 숨기는 애니메이션 시간과 동기화
+        }, 500); // 애니메이션 시간 동기화
     };
 
     // hover 시 동작
@@ -50,5 +50,15 @@ document.querySelectorAll('.postit').forEach(element => {
 
         element.classList.remove('square-mode');
         hideText(); // 텍스트 숨기기
+    });
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const lastShape = document.getElementById('lastShape');
+
+    // 클릭 시 동그라미에서 직사각형으로 변환
+    lastShape.addEventListener('click', () => {
+        lastShape.classList.toggle('rectangle');
     });
 });

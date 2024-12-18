@@ -10,43 +10,45 @@ document.querySelectorAll('.postit').forEach(element => {
     element.appendChild(pElement1);
     element.appendChild(pElement2);
 
-    let isSquare = false; // 현재 상태 플래그
+    let isHovered = false; // 상태를 추적하는 플래그
 
-    // 상태 전환 함수
+    // 텍스트 표시
     const showText = () => {
-        if (!isSquare) {
-            element.classList.add('square-mode'); // 사각형 상태 추가
-            pElement1.textContent = hoverText1; // 첫 번째 텍스트 설정
-            pElement2.textContent = hoverText2; // 두 번째 텍스트 설정
-        }
+        pElement1.textContent = hoverText1;
+        pElement2.textContent = hoverText2;
+        pElement1.style.opacity = '1';
+        pElement2.style.opacity = '1';
     };
 
+    // 텍스트 숨기기
     const hideText = () => {
-        if (isSquare) {
-            element.classList.remove('square-mode'); // 사각형 상태 제거
-            pElement1.textContent = ''; // 텍스트 숨김
-            pElement2.textContent = ''; // 텍스트 숨김
-        }
+        pElement1.style.opacity = '0';
+        pElement2.style.opacity = '0';
+        setTimeout(() => {
+            if (!isHovered) {
+                pElement1.textContent = '';
+                pElement2.textContent = '';
+            }
+        }, 500); // 텍스트 숨기는 애니메이션 시간과 동기화
     };
 
     // hover 시 동작
     element.addEventListener('mouseover', () => {
-        if (!isSquare) {
-            isSquare = true; // 플래그 설정
-            element.addEventListener('transitionend', function onTransitionEnd(event) {
-                if (event.propertyName === 'width' || event.propertyName === 'height') {
-                    showText(); // 텍스트 표시
-                    element.removeEventListener('transitionend', onTransitionEnd); // 이벤트 제거
-                }
-            });
-        }
+        if (isHovered) return; // 이미 hover 상태면 실행하지 않음
+        isHovered = true;
+
+        element.classList.add('square-mode');
+        setTimeout(() => {
+            if (isHovered) showText(); // 텍스트 표시
+        }, 500); // 도형 변화 애니메이션과 동기화
     });
 
     // 마우스가 벗어날 때 동작
     element.addEventListener('mouseout', () => {
-        if (isSquare) {
-            isSquare = false; // 플래그 초기화
-            hideText(); // 텍스트 숨김
-        }
+        if (!isHovered) return; // 이미 원 상태면 실행하지 않음
+        isHovered = false;
+
+        element.classList.remove('square-mode');
+        hideText(); // 텍스트 숨기기
     });
 });
